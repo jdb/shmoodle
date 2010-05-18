@@ -1,0 +1,51 @@
+<html>
+  <head><title>Vote</title></head>
+
+  <body>
+
+    <h1> {{ question }} </h1>
+    {{ description }} <br/>
+    Current votes
+
+    <table>
+      <tr>
+	<td> Choices </td>
+        {% for c in choices %}
+	<td> {{ c }} </td> 
+        {% endfor   %}
+	<td> Comment </td>
+      </tr>
+
+      {% for name,prefs,comment in voters %}
+      <tr>
+	<td> {{ name }} </td> 
+	{% for p in prefs %}	
+	   <td> {{ p }} </td> 
+	{% endfor %}
+	<td> {{ comment }} </td> 
+      </tr>
+      {% endfor %}
+
+      <tr>
+	<td> Results </td>
+	{% for r in results %}	
+	   <td> {{ r }} </td> 
+	{% endfor %}
+	</tr>
+    </table>
+
+
+    <h1>Your vote matters</h1>
+
+    <form 
+       action="/vote_post/{{ urlid }}" 
+       method="post">
+
+      {{ form.as_p }}
+
+      <input type="submit" value="Submit">
+
+    </form>
+  </body>
+
+</html>

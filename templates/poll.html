@@ -1,0 +1,15 @@
+<html>
+  <head><title>Create your poll</title></head>
+  <body>
+
+    Please fill the form:
+
+    <form action="/poll_post/" method="post">
+      <table>
+	{{ poll.as_p }}
+      </table>
+      <input type="submit" value="Submit" />
+    </form>
+    
+  </body>
+</html>
